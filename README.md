@@ -219,8 +219,8 @@ zipp                         3.18.2
     <img width="781" alt="截圖 2024-06-06 晚上10 47 47" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/d483a76f-a8af-4cf8-b862-0c23ef86c53a">
 
 - **Conclusion**
-  + The model without ICA achieves a higher test accuracy compared to the model with ICA, suggesting that the removal of ICA improves the model's performance in terms of accuracy.
-  + Without applying ICA receives the overall test accuracy of the model, reaching 83.9% compared to 79.5% with ICA. This suggests that ICA may remove some useful information along with the noise, negatively impacting the model's performance. Therefore, excluding ICA from the preprocessing steps results in better performance for sleep stage classification.
+  + The model without ICA achieves a higher test accuracy compared to the model with ICA, indicating that using ICA in this application is not helpful, on the contrary, ICA undermines the overall performance in terms of training speed and accuracy
+  + Without applying ICA receives the overall test accuracy of the model, reaching 83.9% compared to 43.4% with ICA. This suggests that ICA may remove some useful information along with the noise, negatively impacting the model's performance. Therefore, excluding ICA from the preprocessing steps results in better performance for sleep stage classification.
 
 ## References
 - [github:MousaviSajad](https://github.com/MousaviSajad/SleepEEGNet)
