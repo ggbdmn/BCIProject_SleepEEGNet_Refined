@@ -1,12 +1,13 @@
 # BCIProject_SleepEEGNet_Refine
 Video Link:
 
-### Introduction
+## Introduction
   The electroencephalogram (EEG) serves as a pivotal tool in diagnosing sleep
 disorders, with sleep studies involving the continuous recording of EEG data to monitor
 brain activity throughout the night. However, the manual analysis of these lengthy
 recordings poses a significant challenge for sleep experts, underscoring the need for
 automated sleep stage classification systems.
+
   Existing automated sleep scoring methods fall into two main categories: those
 reliant on hand-engineered features and those leveraging deep learning for automated
 feature extraction. While the former achieves reasonable results, it necessitates prior
@@ -16,6 +17,7 @@ Despite the promise of deep learning in sleep stage classification, the class
 imbalance issue within sleep datasets persists as a significant obstacle. This imbalance
 undermines the efficacy of both traditional machine learning techniques and deep
 learning approaches in achieving expert-level performance.
+
   To address these challenges, this study introduces SleepEEGNet, a pioneering
 deep learning framework for automated sleep stage scoring using single-channel EEG
 data. SleepEEGNet adopts a sequence-to-sequence deep learning architecture,
@@ -26,6 +28,7 @@ an attention mechanism is employed to prioritize relevant segments of the input
 sequence during model training. Furthermore, SleepEEGNet introduces novel loss
 functions to tackle the class imbalance problem by treating misclassification errors
 equally across all samples, irrespective of their class distribution.
+
   Overall, this paper proposes a deep learning approach that leverages the sequential
 nature of EEG data and addresses the class imbalance challenge to improve the
 accuracy of automated sleep stage classification using a single-channel EEG signal.
@@ -35,12 +38,12 @@ BNN has stronger ability to quantify uncertainty and better generalization for u
 data, which can be extremely helpful for biomedical applications like brain-machine
 interface (BCI) applications.
 
-### Model Framework
+## Model Framework
 
-### Validation
+## Validation
 
-### Usage
-#### Required environment:
+## Usage
+### Required environment:
 ```
 Package                      Version
 ---------------------------- -----------
@@ -113,21 +116,21 @@ wheel                        0.43.0
 wrapt                        1.14.1
 zipp                         3.18.2
 ```
-#### Execution Pipeline:
-- Dataset Preparation
-  We evaluated our model using the [Physionet Sleep-EDF datasets](https://physionet.org/content/sleep-edfx/1.0.0/) published in 2013
-  Under Terminal,
+### Execution Pipeline:
+- **Dataset Preparation**
+  + We evaluated our model using the [Physionet Sleep-EDF datasets](https://physionet.org/content/sleep-edfx/1.0.0/) published in 2013
+  + Under Terminal,
   To download SC subjects from the Sleep_EDF (2013) dataset, use the below script:
   ```
   cd data_2013
   chmod +x download_physionet.sh
   ./download_physionet.sh
   ```
-  Use below scripts to extract sleep stages from the specific EEG channels of the Sleep_EDF (2013) dataset:
+  + Use below scripts to extract sleep stages from the specific EEG channels of the Sleep_EDF (2013) dataset:
   ```
   python prepare_physionet.py --data_dir data_2013 --output_dir data_2013/eeg_fpz_cz --select_ch 'EEG Fpz-Cz'
   ```
-  If there is a need to go through the process of ICA, open the **seq2seq_sleep_sleep-EDF.py** file, and deannotate the line 270-306 like below:
+  + If there is a need to go through the process of ICA, open the **seq2seq_sleep_sleep-EDF.py** file, and deannotate the line 270-306 like below:
   ```
   ...
   ################################# ICA ##########################################  
@@ -170,10 +173,41 @@ zipp                         3.18.2
   ...
   ```
   then run the scripts to extract sleep stages.
-- Train
-- Results
-- Visualization
+- **Train**
+  + Run the below script to train SleepEEGNET model using Fpz-Cz channel of the Sleep_EDF (2013) dataset:
+  ```
+  python seq2seq_sleep_sleep-EDF.py --data_dir data_2013/eeg_fpz_cz --output_dir output_2013
+  ```
+  + You may be able to adjust the parameters in the **seq2seq_sleep_sleep-EDF.py** file, line 35-46:
+  ```
+  class HParams:
+    epochs: int = 120  # 120, 300 ###################################change
+    batch_size: int = 40  # 20, 10
+    num_units: int = 128
+    embed_size: int = 10
+    input_depth: int = 3000
+    #n_channels: int = 40  ###100e
+    max_time_step: int = 40  # 5 3 second best 10# 40 # 100
+    output_max_length: int = 11  # max_time_step +1
+    akara2017: bool = True
+    test_step: int = 5  # each 10 epochs
+    num_folds: int= 5  ######################################### change
+    num_classes: int = 5
+  ```
+- **Results**
+  + Run the below script to present the achieved results by SleepEEGNet model for Fpz-Cz channel:
+  ```
+  python summary.py --data_dir output_2013/eeg_fpz_cz
+  ```
+- **Visualization**
+  + Run the below script to visualize attention maps of a sequence input (EEG epochs) for Fpz-Cz channel:
+  ```
+  python visualize.py --data_dir output_2013/eeg_fpz_cz
+  ```
 
-### Results
+## Results
 
-### References
+## References
+- [github:MousaviSajad](https://github.com/MousaviSajad/SleepEEGNet)
+- [SleepEEGNet: Automated Sleep Stage Scoring with
+Sequence to Sequence Deep Learning Approach](https://arxiv.org/pdf/1903.02108)
