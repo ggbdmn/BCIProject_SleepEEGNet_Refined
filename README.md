@@ -22,7 +22,8 @@ learning approaches in achieving expert-level performance.
 
 ## Model Framework
 - **Data Process Pipeline**
-![pipeline](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/aedadf90-1075-4477-b327-d2f4a555c4cc)
+![pipeline](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/63e293e6-c454-45d5-839b-17640bab12e6)
+
 *The ICA part is optional.
 
 - **The Model Architecture**
