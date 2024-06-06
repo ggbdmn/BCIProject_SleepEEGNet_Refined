@@ -1,6 +1,5 @@
 # BCIProject_SleepEEGNet_Refined
 - Video Link:
-- The table applying ICA and ASR: 
 
 ## Introduction
   The electroencephalogram (EEG) serves as a pivotal tool in diagnosing sleep
@@ -26,7 +25,7 @@ learning approaches in achieving expert-level performance.
 ![pipeline](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/aedadf90-1075-4477-b327-d2f4a555c4cc)
 *The ICA part is optional.
 
-- **The BNN Architecture**
+- **The Model Architecture**
 ![model](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/6404b7d6-b501-417a-a815-e543c6e532b6)
 
 ## Validation
@@ -43,7 +42,7 @@ learning approaches in achieving expert-level performance.
 - **Confusion Matrix:** Used to visualize the performance of the classification model and to calculate other metrics.
 - **F1 Score:** The harmonic mean of precision and recall and is particularly useful for imbalanced classes.
 - **Cohen’s Kappa Score:** Measuring the agreement between predicted and true labels, accounting for the possibility of agreement occurring by chance.
-6. **Model Testing and Validation**
+5. **Model Testing and Validation**
 - **Train-Test Split:** Data is split into training and testing sets to evaluate the model's performance on unseen data.
 - **Test Step Validation:** Regular testing after a defined number of epochs (test_step: int = 5) ensures that the model's performance is monitored throughout the training process.
 
@@ -121,6 +120,7 @@ wheel                        0.43.0
 wrapt                        1.14.1
 zipp                         3.18.2
 ```
+
 ### Execution Pipeline:
 - **Dataset Preparation**
   + We evaluated our model using the [Physionet Sleep-EDF datasets](https://physionet.org/content/sleep-edfx/1.0.0/) published in 2013
@@ -178,6 +178,7 @@ zipp                         3.18.2
   ...
   ```
   then run the scripts to extract sleep stages.
+
 - **Train**
   + Run the below script to train SleepEEGNET model using Fpz-Cz channel of the Sleep_EDF (2013) dataset:
   ```
@@ -201,6 +202,18 @@ zipp                         3.18.2
   ```
 
 ## Results
+- **Run model without ICA**
+  + The accuracy and loss by epochs
+    ![441948826_1903231473455384_3976518203206292983_n](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/db6327cd-09a0-46e2-a83b-2e83161149e1)
+  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores
+    <img width="783" alt="截圖 2024-06-06 下午4 45 45" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/38461b8d-bdcc-422a-8a6a-82b0d8da3fc7">
+
+- **Run model with ICA**
+  + The accuracy and loss by epochs
+  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores
+  
+- **Conclusion**
+  + 
 
 ## References
 - [github:MousaviSajad](https://github.com/MousaviSajad/SleepEEGNet)
