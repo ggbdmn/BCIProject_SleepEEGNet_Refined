@@ -1,5 +1,5 @@
 # BCIProject_SleepEEGNet_Refined
-- Video Link:
+- Video Link: [BCI_SleepEEGNet_Refined](https://youtu.be/XgWqZGABv24)
 
 ## Introduction
   The electroencephalogram (EEG) serves as a pivotal tool in diagnosing sleep
@@ -50,6 +50,7 @@ learning approaches in achieving expert-level performance.
 ## Usage
 ### Required environment:
 ```
+python                       3.9
 Package                      Version
 ---------------------------- -----------
 absl-py                      2.1.0
@@ -204,15 +205,19 @@ zipp                         3.18.2
 
 ## Results
 - **Run model without ICA**
-  + The accuracy and loss by epochs
+  + The accuracy and loss by epochs:
     ![441948826_1903231473455384_3976518203206292983_n](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/db6327cd-09a0-46e2-a83b-2e83161149e1)
-  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores
+    
+  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores:
     <img width="783" alt="截圖 2024-06-06 下午4 45 45" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/38461b8d-bdcc-422a-8a6a-82b0d8da3fc7">
 
 - **Run model with ICA**
-  + The accuracy and loss by epochs
-  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores
-  
+  + The accuracy and loss by epochs:
+    ![436443770_967867174980589_3275816979153451228_n](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/31ef9258-7879-4e50-8d80-495b9b5b19ae)
+    
+  + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores:
+    <img width="781" alt="截圖 2024-06-06 晚上10 47 47" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/d483a76f-a8af-4cf8-b862-0c23ef86c53a">
+
 - **Conclusion**
   + 
 
