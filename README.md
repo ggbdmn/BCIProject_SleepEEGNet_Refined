@@ -1,6 +1,6 @@
 # BCIProject_SleepEEGNet_Refined
-Video Link:
-The table applying ICA and ASR: 
+- Video Link:
+- The table applying ICA and ASR: 
 
 ## Introduction
   The electroencephalogram (EEG) serves as a pivotal tool in diagnosing sleep
@@ -40,26 +40,32 @@ data, which can be extremely helpful for biomedical applications like brain-mach
 interface (BCI) applications.
 
 ## Model Framework
+- **Data Process Pipeline**
+![pipeline](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/aedadf90-1075-4477-b327-d2f4a555c4cc)
+*The ICA part is optional.
+
+- **The BNN Architecture**
+![model](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/6404b7d6-b501-417a-a815-e543c6e532b6)
 
 ## Validation
 1. **Data Preprocessing and Augmentation**
 - **Normalization and Scaling:** Data normalization using MinMaxScaler ensures the EEG data is scaled appropriately, which is crucial for the convergence of neural networks.
 - **Oversampling and Undersampling:** Techniques like SMOTE (Synthetic Minority Over-sampling Technique), RandomUnderSampler, and ADASYN are used to handle class imbalance, ensuring the model does not become biased towards more frequent classes.
 2. **Model Training and Hyperparameter Tuning**
-**Cross-Validation:** The script uses 5-fold cross-validation (num_folds: int = 5) to ensure the model’s performance is robust and not dependent on a single train-test split.
-**Hyperparameter Tuning:** The use of hyperparameters such as epochs, batch_size, num_units, etc., are fine-tuned to optimize model performance.
+- **Cross-Validation:** The script uses 5-fold cross-validation (num_folds: int = 5) to ensure the model’s performance is robust and not dependent on a single train-test split.
+- **Hyperparameter Tuning:** The use of hyperparameters such as epochs, batch_size, num_units, etc., are fine-tuned to optimize model performance.
 3. **Model Architecture**
-**Deep Learning Layers:** Employing a combination of LSTM, Conv1D, Bidirectional layers, and Attention mechanisms to capture temporal dependencies and spatial features from the EEG data.
-**Dropout Layers:** Dropout layers are used for regularization to prevent overfitting.
+- **Deep Learning Layers:** Employing a combination of LSTM, Conv1D, Bidirectional layers, and Attention mechanisms to capture temporal dependencies and spatial features from the EEG data.
+- **Dropout Layers:** Dropout layers are used for regularization to prevent overfitting.
 4. **Evaluation Metrics**
-**Confusion Matrix:** Used to visualize the performance of the classification model and to calculate other metrics.
-**F1 Score:** The harmonic mean of precision and recall and is particularly useful for imbalanced classes.
-**Cohen’s Kappa Score:** Measuring the agreement between predicted and true labels, accounting for the possibility of agreement occurring by chance.
+- **Confusion Matrix:** Used to visualize the performance of the classification model and to calculate other metrics.
+- **F1 Score:** The harmonic mean of precision and recall and is particularly useful for imbalanced classes.
+- **Cohen’s Kappa Score:** Measuring the agreement between predicted and true labels, accounting for the possibility of agreement occurring by chance.
 5. **Performance Logging**
-**TensorBoard:** Monitoring the model’s performance in real-time and tuning the model accordingly.
+- **TensorBoard:** Monitoring the model’s performance in real-time and tuning the model accordingly.
 6. **Model Testing and Validation**
-**Train-Test Split:** Data is split into training and testing sets to evaluate the model's performance on unseen data.
-**Test Step Validation:** Regular testing after a defined number of epochs (test_step: int = 5) ensures that the model's performance is monitored throughout the training process.
+- **Train-Test Split:** Data is split into training and testing sets to evaluate the model's performance on unseen data.
+- **Test Step Validation:** Regular testing after a defined number of epochs (test_step: int = 5) ensures that the model's performance is monitored throughout the training process.
 
 ## Usage
 ### Required environment:
