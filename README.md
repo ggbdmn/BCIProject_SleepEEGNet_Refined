@@ -19,25 +19,7 @@ imbalance issue within sleep datasets persists as a significant obstacle. This i
 undermines the efficacy of both traditional machine learning techniques and deep
 learning approaches in achieving expert-level performance.
 
-  To address these challenges, this study introduces SleepEEGNet, a pioneering
-deep learning framework for automated sleep stage scoring using single-channel EEG
-data. SleepEEGNet adopts a sequence-to-sequence deep learning architecture,
-integrating Convolutional Neural Networks (CNNs) for feature extraction and
-Bidirectional Recurrent Neural Networks (BiRNNs) to capture temporal information
-from sequences by considering both past and future inputs simultaneously. Additionally,
-an attention mechanism is employed to prioritize relevant segments of the input
-sequence during model training. Furthermore, SleepEEGNet introduces novel loss
-functions to tackle the class imbalance problem by treating misclassification errors
-equally across all samples, irrespective of their class distribution.
-
-  Overall, this paper proposes a deep learning approach that leverages the sequential
-nature of EEG data and addresses the class imbalance challenge to improve the
-accuracy of automated sleep stage classification using a single-channel EEG signal.
-Last but not the least, we propose to incorporate the concept of Bayesian neural
-networks (BNNs) into the deep learning approach used by this paper. Theoretically,
-BNN has stronger ability to quantify uncertainty and better generalization for unseen
-data, which can be extremely helpful for biomedical applications like brain-machine
-interface (BCI) applications.
+  To address these challenges, we proposed a machine learning model that is solely based on traditional convolution neural networks (CNNs) structure. Our model  adopts a sequence-to-sequence deep learning architecture and is able to achieve an overall accuracy of 84%.
 
 ## Model Framework
 - **Data Process Pipeline**
@@ -55,14 +37,12 @@ interface (BCI) applications.
 - **Cross-Validation:** The script uses 5-fold cross-validation (num_folds: int = 5) to ensure the model’s performance is robust and not dependent on a single train-test split.
 - **Hyperparameter Tuning:** The use of hyperparameters such as epochs, batch_size, num_units, etc., are fine-tuned to optimize model performance.
 3. **Model Architecture**
-- **Deep Learning Layers:** Employing a combination of LSTM, Conv1D, Bidirectional layers, and Attention mechanisms to capture temporal dependencies and spatial features from the EEG data.
+- **Deep Learning Layers:** Employing a combination of CNN to capture temporal dependencies and spatial features from the EEG data.
 - **Dropout Layers:** Dropout layers are used for regularization to prevent overfitting.
 4. **Evaluation Metrics**
 - **Confusion Matrix:** Used to visualize the performance of the classification model and to calculate other metrics.
 - **F1 Score:** The harmonic mean of precision and recall and is particularly useful for imbalanced classes.
 - **Cohen’s Kappa Score:** Measuring the agreement between predicted and true labels, accounting for the possibility of agreement occurring by chance.
-5. **Performance Logging**
-- **TensorBoard:** Monitoring the model’s performance in real-time and tuning the model accordingly.
 6. **Model Testing and Validation**
 - **Train-Test Split:** Data is split into training and testing sets to evaluate the model's performance on unseen data.
 - **Test Step Validation:** Regular testing after a defined number of epochs (test_step: int = 5) ensures that the model's performance is monitored throughout the training process.
@@ -218,16 +198,6 @@ zipp                         3.18.2
     test_step: int = 5  # each 10 epochs
     num_folds: int= 5  ######################################### change
     num_classes: int = 5
-  ```
-- **Results**
-  + Run the below script to present the achieved results by SleepEEGNet model for Fpz-Cz channel:
-  ```
-  python summary.py --data_dir output_2013/eeg_fpz_cz
-  ```
-- **Visualization**
-  + Run the below script to visualize attention maps of a sequence input (EEG epochs) for Fpz-Cz channel:
-  ```
-  python visualize.py --data_dir output_2013/eeg_fpz_cz
   ```
 
 ## Results
