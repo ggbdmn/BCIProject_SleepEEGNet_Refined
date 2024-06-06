@@ -204,14 +204,14 @@ zipp                         3.18.2
   ```
 
 ## Results
-- **Run model without ICA**
+- **Run model without ICA (120 epochs, 20 folds)**
   + The accuracy and loss by epochs:
     ![441948826_1903231473455384_3976518203206292983_n](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/db6327cd-09a0-46e2-a83b-2e83161149e1)
     
   + The final results of loss, accuracy, Confusion Matrix(W1, N1, N2, N3, REM), Cohen's Kappa and F1 scores:
     <img width="783" alt="截圖 2024-06-06 下午4 45 45" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/38461b8d-bdcc-422a-8a6a-82b0d8da3fc7">
 
-- **Run model with ICA**
+- **Run model with ICA (60 epochs, 5 folds)**
   + The accuracy and loss by epochs:
     ![436443770_967867174980589_3275816979153451228_n](https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/31ef9258-7879-4e50-8d80-495b9b5b19ae)
     
@@ -219,7 +219,8 @@ zipp                         3.18.2
     <img width="781" alt="截圖 2024-06-06 晚上10 47 47" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/30823131/d483a76f-a8af-4cf8-b862-0c23ef86c53a">
 
 - **Conclusion**
-  + 
+  + The model without ICA achieves a higher test accuracy compared to the model with ICA, suggesting that the removal of ICA improves the model's performance in terms of accuracy.
+  + Without applying ICA receives the overall test accuracy of the model, reaching 83.9% compared to 79.5% with ICA. This suggests that ICA may remove some useful information along with the noise, negatively impacting the model's performance. Therefore, excluding ICA from the preprocessing steps results in better performance for sleep stage classification.
 
 ## References
 - [github:MousaviSajad](https://github.com/MousaviSajad/SleepEEGNet)
