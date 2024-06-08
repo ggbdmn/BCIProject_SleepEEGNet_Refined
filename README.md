@@ -18,7 +18,64 @@ imbalance issue within sleep datasets persists as a significant obstacle. This i
 undermines the efficacy of both traditional machine learning techniques and deep
 learning approaches in achieving expert-level performance.
 
-  To address these challenges, we proposed a machine learning model that is solely based on traditional convolution neural networks (CNNs) structure. Our model  adopts a sequence-to-sequence deep learning architecture and is able to achieve an overall accuracy of 84%.
+  To address these challenges, we proposed a machine learning model that is solely based on traditional convolution neural networks (CNNs) structure. Our model adopts a sequence-to-sequence deep learning architecture and is able to achieve an overall accuracy of 84%.
+
+
+### Data Description
+
+- **Experimental Design/Paradigm:**
+
+    Sleep Cassette data were obtained in a 1987-1991 study of age effects on sleep in healthy Caucasians aged 25-101, without any sleep-related medication. Subjects wore a modified Walkman-like cassette-tape recorder for 20 hours each during two subsequent day-night periods for 20 hours each.
+    We would use ICA, frequency filter and ASR to remove the artifact, and train the data with CNN model.
+
+- **Procedure for Collecting Data:**
+
+    Most young volunteers underwent the electrode placement procedure at the hospital.     
+    The senior age group underwent this procedure at their residences, performed by physician and an EEG technician.
+
+- **Hardware and Software Used:**
+
+    Modified Oxford four-channel cassette recorder with frequency response range from 0.5 to 100Hz.       
+    They did not specify which software they used. Only know that the signal was recorded on PC and Rechtschaffen and Kales sleep stages were manually scored.
+
+- **Data Size:**
+
+    - Raw data for one PSG.edf file is about 50MB
+    - Each Hypnogram.edf file is about 5KB
+    - The total raw data is 1.96GB
+
+- **Number of Channels, Sampling Rate:**
+
+    The one that is used in our system is Fpz-Cz data.    
+    The EOG and EEG signals were sampled at 100Hz. The EMG signal was high-pass filtered, rectified and low-pass filtered. Oronasal airflow, rectal body temperature and the event marker were sampled at 1Hz.
+ 
+- **The Source of Data and Experiment:**
+
+    - Data source: <https://physionet.org/content/sleep-edfx/1.0.0/#files-panel> , we use the data in folder sleep-cassette.
+    - Experiment: Mourtazaev, M. S., Kemp, B., Zwinderman, A. H., & Kamphuisen, H. A. (1995). Age and gender affect different characteristics of slow waves in the sleep EEG. Sleep, 18(7), 557–564. https://doi.org/10.1093/sleep/18.7.557
+
+- **More Description:**
+
+    - Files are named in the form sc4ssNEO-PSG.edf where ss is the subject number, and N is night. One thing to noticed is that the first nights of subjects 36 and 52, and the second night of subject 13, were lost.
+    The sleep-edf database contains 197 whole-night PolySomnoGraphic sleep recordings, containing EEG, EOG, chin EMG, and event markers.
+    There are two types of data. The *PSG.edf files are whole-night polysmnographic sleep recordings contains EEG, EOG, submental chin EMG, and an event marker. These files are formatted in EDF. The *HYPNOGRAM.EDF files contain annotations of the sleep patterns that correspond to the PSGs. The patterns consist of sleep stages: W, R 1, 2, 3, 4, M (Movement time) and ? (not scored). These stages were manually scored by well-trained technicians, but base on channel Fpz-Cz/Pz-Oz EEGs. These files are formatted in EDF+.
+
+### Quality Evaluation
+
+- **Existing Literature:**
+
+    - Mousavi S, Afghah F, Acharya UR (2019) SleepEEGNet: Automated sleep stage scoring with sequence to sequence deep learning approach. PLOS ONE 14(5): e0216456. https://doi.org/10.1371/journal.pone.0216456:    
+      The system we based on and analyze in midterm report. The output can guarantee the credibility of the data
+    - B. Kemp, A. H. Zwinderman, B. Tuk, H. A. C. Kamphuisen and J. J. L. Oberye, "Analysis of a sleep-dependent neuronal feedback loop: the slow-wave microcontinuity of the EEG," in IEEE Transactions on Biomedical Engineering, vol. 47, no. 9, pp. 1185-1194, Sept. 2000, doi: 10.1109/10.867928.:     
+      They derived the maximum-likelihood estimator of the feedback gain and applied it to quantify sleep depth. As the results, females were found to have twice the SWP of males, but no gender effect on SW% was found. It confirms earlier reports that gender affects SWP but not sleep depth. Meaning the data is reliable.
+
+- **ICLabel:**
+
+  Unfortunately, even though we are able to run ICA and ASR, the ICLabel can't be established due to the lack of information of locations. The resource did not specify the hardware they utilized, thererfore the location data relocate is not possible. The paper points out that they have filtered the signal and removed the artifact (eyes, muscle, sweat).    
+      Comparison of SC4001E0-PSG.edf: ASR-corrected and data after ICA.
+    <img width="1440" alt="Screen Shot 2024-06-04 at 12 55 48 AM" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/82556349/50884f09-e7a7-4063-bf7a-e51550dd6385">
+      Comparison of SC4002E0-PSG.edf: data after ICA and ASR-corrected.
+      <img width="1428" alt="Screen Shot 2024-06-09 at 12 48 06 AM" src="https://github.com/ggbdmn/BCIProject_SleepEEGNet_Refined/assets/82556349/83459aa6-ec91-44b9-a9a3-46ea49275532">
 
 ## Model Framework
 - **Data Process Pipeline**
